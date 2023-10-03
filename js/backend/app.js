@@ -30,6 +30,7 @@ async function run() {
 
         // Ensures that the client will close when you finish/error
         await client.close();
+        console.log("Closed connection to server")
     }
 }
 run().catch(console.dir);
