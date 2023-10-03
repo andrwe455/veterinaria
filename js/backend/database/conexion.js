@@ -2,11 +2,9 @@ const mongoose = require('mongoose');
 const {login}= require("../main");
 
 const dbConnection = async() => {
-
-    const {username,password} =login();
-    console.log({username,password});
+    
     try {
-        mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.labzm9a.mongodb.net/?retryWrites=true&w=majority`);
+        mongoose.connect('mongodb+srv://andresgutierrez83111:9ufhaDrfzWUZ9PXe@cluster0.labzm9a.mongodb.net/?retryWrites=true&w=majority');
 
         console.log('DB ONLINE');
     } catch (error) {
