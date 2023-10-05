@@ -18,7 +18,7 @@
 
 	<header>
 	  <a href="index.html">
-		<img src="../images/vetlifelogin.png" alt="Logo VetLife" />
+		<img src="images/vetlifelogin.png" alt="Logo VetLife" />
 	  </a>
 	</header>
 	
@@ -31,7 +31,7 @@
 					<input type="text" name="txt" placeholder="Usuario" required="">
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Contraseña" required="">
-					<a class="nav-link" href="/Admin/index.html"> <button>Registrate</button> </a>
+					<a class="nav-link" href="Admin/index.html"> <button>Registrate</button> </a>
 
 				</form>
 			</div>
@@ -44,8 +44,6 @@
 					<button type="submit">Ingresa</button>
 				</form>
 			</div>
-			
-		
 			<script>
 				document.getElementById("loginForm").addEventListener("submit", function(event) {
 					event.preventDefault(); // Evitar que el formulario se envíe automáticamente
@@ -57,7 +55,7 @@
 					// Realizar validaciones aquí (por ejemplo, verificar el email y la contraseña)
 					// Si las validaciones son exitosas, redirigir al usuario a la página de administrador
 					if(email === "admin@example.com" && password === "contra123") {
-						window.location.href = "/Admin/index.html";
+						window.location.href = "Admin/index.html";
 					} else {
 						// Si las validaciones fallan, mostrar un mensaje de error o realizar acciones apropiadas
 						alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
