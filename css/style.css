@@ -83,6 +83,17 @@ a:focus {
           box-shadow: none;
 }
 
+
+
+.custom-col-lg-a {
+  width: 40%; /* (2.5 / 12) * 100% */
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 1px;
+  padding-left: 90px;
+}
+
 /*header section*/
 .hero_area {
   position: relative;
@@ -617,8 +628,8 @@ a:focus {
 }
 
 .team_section .team_container .box {
-  padding: 35px 0 0 0;
-  border-radius: 5px;
+  padding: px 0 0 0;
+  border-radius: 3px;
   overflow: hidden;
   -webkit-transition: all .1s;
   transition: all .1s;
@@ -640,13 +651,14 @@ a:focus {
 }
 
 .team_section .team_container .box .img-box img {
-  width: 120px;
+  width: 160px;
   border-radius: 100%;
   border: 5px solid #ffffff;
 }
 
 .team_section .team_container .box .detail-box {
-  margin: 25px 0;
+  margin: 50px 0px 30px;
+ 
 }
 
 .team_section .team_container .box .detail-box h5 {
@@ -656,7 +668,7 @@ a:focus {
 }
 
 .team_section .team_container .box .social_box {
-  padding: 10px 45px 20px 45px;
+  padding: 10px 30px 20px px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
