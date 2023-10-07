@@ -9,6 +9,7 @@ const controlador = require('../controller/controlador');
 router.post('/nuevo', controlador.signup);
 router.post('/login', controlador.login);
 router.post('/crearmascota', controlador.Crearmascota);
+router.post('/crearhistoria',controlador.Crearhistoria);
 
 
 module.exports = router;

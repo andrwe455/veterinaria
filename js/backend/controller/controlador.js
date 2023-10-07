@@ -1,5 +1,6 @@
 const usuario = require('../schemas/usuario.js');
 const mascota = require('../schemas/mascotas.js');
+const historias = require('../schemas/historias.js');
 
 async function signup(req, res) {
 
@@ -22,6 +23,7 @@ async function signup(req, res) {
             }
             else {
                 await nuevousuario.save();
+                console.log(nuevousuario);
                 return res.status(200).json(nuevousuario);
             }
         } catch (error) {
@@ -50,10 +52,10 @@ async function login(req, res) {
         if (user.password === password )
         {
             if (user.role === "admin") {
-                // res.redirect('../../Admin/index.html');
+                res.redirect('../../Admin/index.html');
                 console.log("Usuario logeado correctamente");
             }
-            return res.status(200).json({msg:"Usuario logeado correctamente"});
+            //return res.status(200).json({msg:"Usuario logeado correctamente"});
         }
     }catch (error) {
         res.status(500).json({error: 'Error al crear el servicio'});
@@ -73,9 +75,23 @@ async function Crearmascota (req, res) {
         res.status(500).json({error: 'Error al crear el servicio'});
     }
 }
+async function Crearhistoria (req, res) {
+
+    console.log('Solicitud POST recibida en /crearhistoria');
+    try {
+        const nuevaHistoria = new historias(req.body);
+
+        await nuevaHistoria.save();
+        res.status(201).json(nuevaHistoria);
+    }
+    catch (error) {
+        res.status(500).json({error: 'Error al crear el servicio'});
+    }
+}
 
 module.exports = {
     signup,
     login,
-    Crearmascota
+    Crearmascota,
+    Crearhistoria
 }

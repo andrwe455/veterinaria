@@ -44,23 +44,23 @@
 					<button type="submit">Ingresa</button>
 				</form>
 			</div>
-			<script>
-				document.getElementById("loginForm").addEventListener("submit", function(event) {
-					event.preventDefault(); // Evitar que el formulario se envíe automáticamente
-
-					// Obtener los valores de los campos de entrada
-					var email = document.getElementById("email").value;
-					var password = document.getElementById("pswd").value;
-
-					// Realizar validaciones aquí (por ejemplo, verificar el email y la contraseña)
-					// Si las validaciones son exitosas, redirigir al usuario a la página de administrador
-					if(email === "admin@example.com" && password === "contra123") {
-						window.location.href = "../Admin/index.html";
-					} else {
-						// Si las validaciones fallan, mostrar un mensaje de error o realizar acciones apropiadas
-						alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
-					}
-				});
+			<script src="../js/backend/login.js">
+				// document.getElementById("loginForm").addEventListener("submit", function(event) {
+				// 	event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+				//
+				// 	// Obtener los valores de los campos de entrada
+				// 	var email = document.getElementById("email").value;
+				// 	var password = document.getElementById("pswd").value;
+				//
+				// 	// Realizar validaciones aquí (por ejemplo, verificar el email y la contraseña)
+				// 	// Si las validaciones son exitosas, redirigir al usuario a la página de administrador
+				// 	if(email === "admin@example.com" && password === "contra123") {
+				// 		window.location.href = "../Admin/index.html";
+				// 	} else {
+				// 		// Si las validaciones fallan, mostrar un mensaje de error o realizar acciones apropiadas
+				// 		alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+				// 	}
+				// });
 			</script>
 	</div>
 </body>
