@@ -408,7 +408,7 @@ a:focus {
         text-transform: uppercase;
       }
 
-      p {}
+      
 
       a {
         color: $primary2;
@@ -446,6 +446,7 @@ a:focus {
 
   .row {
     align-items: center;
+    
   }
 
   .img-box {
@@ -547,6 +548,18 @@ a:focus {
       margin-top: 45px;
       // background-color: #053068;
       background: linear-gradient(to bottom, lighten($color: $primary2, $amount: 3), lighten($color: $primary2, $amount: 5));
+      
+      
+      .custombox{
+        padding: 35px 0 0 0;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: all .1s;
+        margin-top: 45px;
+        // background-color: #053068;
+        background: $primary2;
+      }
+
 
       .img-box {
         display: flex;
@@ -555,7 +568,7 @@ a:focus {
 
         img {
           width: 120px;
-          border-radius: 100%;
+          border-radius: 10%;
           border: 5px solid $white;
         }
 
@@ -586,9 +599,9 @@ a:focus {
           }
         }
       }
-    }
+    
   }
-
+}
 
 }
 
