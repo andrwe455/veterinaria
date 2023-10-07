@@ -13,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 
-
 <body>
 
 	<header>
@@ -26,14 +25,14 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 		
 			<div class="signup">
-				<form>
+				<form id="signup">
 					<label for="chk" aria-hidden="true">Registro</label>
-					<input type="text" name="txt" placeholder="Usuario" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Contraseña" required="">
-					<a class="nav-link" href="/Admin/index.html"> <button>Registrate</button> </a>
-
+					<input type="text" placeholder="Usuario" required="" id="name" name="name">
+					<input type="email" name="emails" placeholder="Email" required="" id="emails">
+					<input type="password" name="pswd" placeholder="Contraseña" required="" id="pass">
+					<button>Registrate</button>
 				</form>
+				<script src="js/backend/singup.js"></script>
 			</div>
 
 			<div class="login">

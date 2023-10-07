@@ -1,36 +1,70 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://andresgutierrez83111:9ufhaDrfzWUZ9PXe@cluster0.labzm9a.mongodb.net/?retryWrites=true&w=majority";
+const express = require('express');
+const mongoose = require('mongoose');
+const usuario = require('./schemas/usuario.js');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
+const app = express();
+
+// Configura la conexión a MongoDB Atlas
+const mongoURI = 'mongodb+srv://andresgutierrez83111:fO1RwkAfBKaGKFA8@cluster0.labzm9a.mongodb.net/taller2?retryWrites=true&w=majority';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Conexión a MongoDB Atlas establecida');
+    })
+    .catch(err => {
+        console.error('Error al conectar a MongoDB Atlas:', err);
+    });
+
+// Rutas de tu API
+// Define tus rutas y lógica de negocio aquí
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+
+app.use(bodyParser.json());
+app.use(cors(({ origin: '*' })));
+app.use(express.json());
+app.use(express.static('public'));
+
+app.post("/nuevo",async (req, res) => {
+
+    console.log('Solicitud POST recibida en /nuevo');
+    try {
+        // Crea una instancia del modelo Servicio con los datos enviados en la solicitud
+        const nuevousuario = new usuario(req.body);
+        // Guarda el nuevo servicio en la base de datos
+        await nuevousuario.save();
+        // Responde con el nuevo servicio creado
+        res.status(201).json(nuevousuario);
+
+    } catch (error) {
+        // Maneja los errores, por ejemplo, si la validación falla o si hay un problema con la base de datos
+        res.status(500).json({error: 'Error al crear el servicio'});
     }
 });
 
-async function run() {
-    try {
-        // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        const db = client.db('taller2');
-        const collection = db.collection('Clientes');
+app.post("/login",async (req, res) => {
 
-        // Realiza operaciones con la base de datos aquí
-        // Ejemplo: Insertar un documento
-        const documentToInsert = { nombre: 'Ejemplo', edad: 30 , so:'asdasd'};
-        const result = await collection.insertOne(documentToInsert);
-        console.log(`Documento insertado con _id: ${result.insertedId}`);
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+   const { Email,password }=req.body;
 
-    } finally {
-
-        // Ensures that the client will close when you finish/error
-        await client.close();
-        console.log("Closed connection to server")
-    }
-}
-run().catch(console.dir);
+   try {
+         const user = await usuario.findOne({Email});
+         console.log(user.password);
+            if(!user){
+                return res.status(404).json({msg:"El usuario no existe"});
+            }
+            if(user.password !== password){
+                return res.status(401).json({msg:"Password incorrecto"});
+            }
+            if (user.password === password)
+            {
+                return res.status(200).json({msg:"Usuario logeado correctamente"});
+            }
+            res.status(200).json({msg:"Usuario logeado correctamente"});
+   }catch (error) {
+        res.status(500).json({error: 'Error al crear el servicio'});
+   }
+});
