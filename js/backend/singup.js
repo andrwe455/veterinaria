@@ -11,7 +11,8 @@ form.addEventListener("submit", async function (event) {
     var formData = {
         usuario: username,
         Email: email,
-        password: password
+        password: password,
+        role: "user"
     };
     let resp;
     try {
@@ -22,7 +23,13 @@ form.addEventListener("submit", async function (event) {
                 },
                 body: JSON.stringify(formData)
             });
-        alert("Usuario creado");
+        if (resp.status==200) {
+                alert("Usuario creado");
+        }
+        else
+        {
+            alert("El usuario ya existe");
+        }
     } catch (error) {
         console.error('Error:', error);
     }
