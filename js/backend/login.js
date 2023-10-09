@@ -21,7 +21,7 @@ lform.addEventListener("submit", async function (event) {
             body: JSON.stringify(formData)
         });
         if (resp.status==200) {
-            window.location.href = "../../Admin/index.html";
+            window.location.href = "../../Website/Admin/index.html";
         }
         alert("Usuario loggeado correctamente");
     } catch (error) {
