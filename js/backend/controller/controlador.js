@@ -8,6 +8,7 @@ async function signup(req, res) {
     try {
         // Crea una instancia del modelo Servicio con los datos enviados en la solicitud
         const nuevousuario = new usuario(req.body);
+
         // Guarda el nuevo servicio en la base de datos
         const Email = req.body.Email;
         const user = await usuario.findOne({Email});
@@ -42,7 +43,6 @@ async function login(req, res) {
 
     try {
         const user = await usuario.findOne({Email});
-        console.log(user.password);
         if(!user){
             return res.status(404).json({msg:"El usuario no existe"});
         }
