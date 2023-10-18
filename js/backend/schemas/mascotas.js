@@ -6,7 +6,7 @@ const mascotasSchema = new mongose.Schema({
     Encargado: String,
     Fecha_Ingreso: Date,
     Fecha_Salida: Date,
-    Duenno: String,
+    Duenno: String
 });
 
 const mascotas = mongose.model('mascotas', mascotasSchema, 'Mascotas');

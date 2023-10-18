@@ -13,7 +13,7 @@
 	<meta name="author" content="" />
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="/Pagina/images/favicon.png" />
+	<link rel="shortcut icon" href="../Pagina/images/favicon.png" />
 
 	<title>VetLife</title>
 
@@ -21,7 +21,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 	<link href="css/responsive.css" rel="stylesheet" />
-</head>
+	</head>
 
 <body>
 	<div class="wrapper">
@@ -76,14 +76,14 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/photos/team-1.jpg" class="avatar img-fluid rounded me-1" alt="Mariana Sinisterra" /> <span class="text-dark">Mariana Sinisterra</span>
+                <img src="img/photos/team-1.png" class="avatar img-fluid rounded me-1" alt="Mariana Sinisterra" /> <span class="text-dark">Mariana Sinisterra</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="Admin/index.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="Admin/index.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/Pagina/index.html">Salir</a>
+								<a class="dropdown-item" href="../Pagina/index.html">Salir</a>
 
 							</div>
 						</li>
@@ -95,15 +95,31 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3"><strong>Historias</strong> Clínicas <strong>Activas</strong></h1> 
-
+					<button class="btn btn-secondary" onclick=cargarHistorias()>Cargar Historias</button>
+					<button class="btn btn-secondary" onclick=abrirModal()>Agregar mascota</button>
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarModal()">&times;</span>
+							<h2>Agregar Mascota</h2>
+							<form id="miFormulario">
+								<!-- Campos del formulario -->
+								<input type="text" id="nombre" placeholder="Nombre de la mascota">
+								<input type="text" id="estado" placeholder="Estado">
+								<input type="text" id="encargado" placeholder="Encargado">
+								<input type="text" id="fechaIngreso" placeholder="Fecha de Ingreso (DD/MM/AAAA)">
+								<input type="text" id="fechaSalida" placeholder="Fecha de Salida (DD/MM/AAAA)">
+								<button type="button" id="enviar" onclick="guardarMascota()">Guardar</button>
+							</form>
+						</div>
+					</div>
+					<script src="../../js/backend/tablaMascotas.js"></script>
 					<div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-
 									<h5 class="card-title mb-0">VetLife</h5>
 								</div>
-								<table class="table table-hover my-0">
+								<table class="table table-hover my-0" id="tMascotas">
 									<thead>
 										<tr>
 											<th>Nombre</th>
@@ -112,90 +128,89 @@
 											<th>Estado</th>
 											<th class="d-none d-md-table-cell">Encargado</th>
 											<th class="d-none d-md-table-cell">Expediente</th>
-											
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Perro Apollo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/09/2023</td>
-											<td><span class="badge bg-success">Salida</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Gato Manchas</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">Pendiente</td>
-											<td><span class="badge bg-danger">Hospitalización</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Hamster Hades</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">Pendiente</td>
-											<td><span class="badge bg-primary">En consulta</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Conejo Nitro</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">Pendiente</td>
-											<td><span class="badge bg-primary">En consulta</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Perro Phoenix</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/09/2023</td>
-											<td><span class="badge bg-success">Salida</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Gato X</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/09/2023</td>
-											<td><span class="badge bg-success">Salida</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Loro Romeo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">Pendiente</td>
-											<td><span class="badge bg-danger">Hospitalización</span></td>
-											<td class="d-none d-md-table-cell">Christina Mason</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
-										<tr>
-											<td>Gato Wombat</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">Pendiente</td>
-											<td><span class="badge bg-primary">En consulta</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-											<td><button class="btn btn-info" >Historia</button></td>
-											<td><span class="btn btn-secondary">Editar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
-										</tr>
+<!--										<tr>-->
+<!--											<td>Perro Apollo</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
+<!--											<td><span class="badge bg-success">Salida</span></td>-->
+<!--											<td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Gato Manchas</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
+<!--											<td><span class="badge bg-danger">Hospitalización</span></td>-->
+<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Hamster Hades</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
+<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
+<!--											<td class="d-none d-md-table-cell">Sharon Lessman</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Conejo Nitro</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
+<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
+<!--											<td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Perro Phoenix</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
+<!--											<td><span class="badge bg-success">Salida</span></td>-->
+<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Gato X</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
+<!--											<td><span class="badge bg-success">Salida</span></td>-->
+<!--											<td class="d-none d-md-table-cell">Sharon Lessman</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Loro Romeo</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
+<!--											<td><span class="badge bg-danger">Hospitalización</span></td>-->
+<!--											<td class="d-none d-md-table-cell">Christina Mason</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td>Gato Wombat</td>-->
+<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
+<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
+<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
+<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
+<!--											<td><button class="btn btn-info" >Historia</button></td>-->
+<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
+<!--											<td><span data-feather="trash-2"> </span></td>-->
+<!--										</tr>-->
 									</tbody>
 								</table>
 							</div>

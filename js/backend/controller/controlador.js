@@ -2,6 +2,12 @@ const usuario = require('../schemas/usuario.js');
 const mascota = require('../schemas/mascotas.js');
 const historias = require('../schemas/historias.js');
 
+/**
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 async function signup(req, res) {
 
     console.log('Solicitud POST recibida en /nuevo');
@@ -93,11 +99,21 @@ async function Crearhistoria (req, res) {
     }
 }
 
-
+async function getmascotas (req,res) {
+    try {
+        const mascotas = await mascota.find();
+        // res.json(mascotas);
+        return res.json(mascotas);
+        // return mascotas;
+    }
+    catch (error) {
+        res.status(500).json({error: 'Error al crear el servicio'});
+    }
+}
 module.exports = {
     signup,
     login,
     Crearmascota,
     Crearhistoria,
-
+    getmascotas
 }
