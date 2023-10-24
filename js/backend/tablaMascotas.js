@@ -1,9 +1,5 @@
 async function cargarHistorias() {
 
-    // const nombre = document.getElementById('nombre').value;
-    // const entrada = document.getElementById('entrada').value;
-    // const salida = document.getElementById('salida').value;
-
     const formDataArray = [];
 
     let resp;
@@ -56,7 +52,6 @@ async function cargarHistorias() {
         const cell7 = newRow.insertCell(6);
         const cell8 = newRow.insertCell(7);
 
-
         cell1.innerHTML = formData.nombre;
 
         const Estado = document.createElement('span');
@@ -94,13 +89,14 @@ async function cargarHistorias() {
         editarSpan.textContent = 'Editar';
         editarSpan.className = 'btn btn-secondary';
 
+
         const historiaButton = document.createElement('button');
         historiaButton.textContent = 'Historia';
         historiaButton.className = 'btn btn-info';
 
         const trashSpan = document.createElement('span');
         trashSpan.setAttribute('data-feather', 'trash-2');
-
+        trashSpan.className = 'btn btn-secondary';
 
         cell6.appendChild(historiaButton);
         cell7.appendChild(editarSpan);
@@ -120,7 +116,37 @@ function cerrarModal() {
     modal.style.display = 'none';
 }
 async function agregarDatos()  {
+    const nombre = document.getElementById('nombre').value;
+    const entrada = document.getElementById('fechaIngreso').value;
+    const salida = document.getElementById('fechaSalida').value;
+    const encargado = document.getElementById('encargado').value;
+    const duenno = document.getElementById('duenno').value;
+    const estado = document.getElementById('estado').value;
 
+    const formData = {
 
+        nombre: nombre,
+        Estado: estado,
+        Encargado: encargado,
+        Fecha_Ingreso: entrada,
+        Fecha_Salida: salida,
+        Duenno: duenno,
+        _id: duenno
+    };
+
+    let resp;
+
+        fetch('http://localhost:3000/crearmascota', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then(response => response.json())
+            .then(data =>{
+                cargarHistorias();
+                cerrarModal();
+            })
+            .catch(error => console.log('Error:', error));
 }
 
