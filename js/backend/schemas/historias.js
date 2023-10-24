@@ -6,7 +6,7 @@ const historiasSchema = new mongose.Schema({
     Nombre_Duenno: String,
     Fecha_inicio: Date,
     Diagnostico: String,
-    Tratamiento: String,
+    Tratamiento: String
 
 });
 

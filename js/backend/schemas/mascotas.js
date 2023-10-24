@@ -1,6 +1,9 @@
 const mongose = require('mongoose');
 
+
+
 const mascotasSchema = new mongose.Schema({
+    _id: String,
     nombre: String,
     Estado: String,
     Encargado: String,

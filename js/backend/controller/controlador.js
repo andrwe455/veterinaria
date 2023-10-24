@@ -110,10 +110,24 @@ async function getmascotas (req,res) {
         res.status(500).json({error: 'Error al crear el servicio'});
     }
 }
+
+async function eliminar (req,res) {
+    console.log('Solicitud DELETE recibida en /eliminarMascota');
+
+    try {
+        const id = req.body;
+        console.log(id);
+        await mascota.deleteOne({_id:id});
+        res.status(200).json({msg:"Mascota eliminada correctamente"});
+    } catch (error) {
+        res.status(500).json({error: 'Error al crear el servicio'});
+    }
+}
 module.exports = {
     signup,
     login,
     Crearmascota,
     Crearhistoria,
-    getmascotas
+    getmascotas,
+    eliminar
 }

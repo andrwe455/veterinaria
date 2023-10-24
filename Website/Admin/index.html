@@ -21,6 +21,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 	<link href="css/responsive.css" rel="stylesheet" />
+	<link href="css/modal.css" rel="stylesheet" />
 	</head>
 
 <body>
@@ -101,14 +102,19 @@
 						<div class="modal-content">
 							<span class="close" onclick="cerrarModal()">&times;</span>
 							<h2>Agregar Mascota</h2>
-							<form id="miFormulario">
+							<form id="miFormulario" class="form">
 								<!-- Campos del formulario -->
 								<input type="text" id="nombre" placeholder="Nombre de la mascota">
-								<input type="text" id="estado" placeholder="Estado">
+								<select id="estado">
+									<option value="En consulta">En consulta</option>
+									<option value="Hospitalización">Hospitalización</option>
+									<option value="Salida">Salida</option>
+								</select>
 								<input type="text" id="encargado" placeholder="Encargado">
-								<input type="text" id="fechaIngreso" placeholder="Fecha de Ingreso (DD/MM/AAAA)">
-								<input type="text" id="fechaSalida" placeholder="Fecha de Salida (DD/MM/AAAA)">
-								<button type="button" id="enviar" onclick="guardarMascota()">Guardar</button>
+								<input type="date" id="fechaIngreso" placeholder="Fecha de Ingreso (DD/MM/AAAA)">
+								<input type="date" id="fechaSalida" placeholder="Fecha de Salida (DD/MM/AAAA)">
+								<input type="text" id="duenno" placeholder="Dueño">
+								<button type="button" id="enviar" onclick="agregarDatos()">Guardar</button>
 							</form>
 						</div>
 					</div>
@@ -130,93 +136,9 @@
 											<th class="d-none d-md-table-cell">Expediente</th>
 										</tr>
 									</thead>
-									<tbody>
-<!--										<tr>-->
-<!--											<td>Perro Apollo</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
-<!--											<td><span class="badge bg-success">Salida</span></td>-->
-<!--											<td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Gato Manchas</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
-<!--											<td><span class="badge bg-danger">Hospitalización</span></td>-->
-<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Hamster Hades</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
-<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
-<!--											<td class="d-none d-md-table-cell">Sharon Lessman</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Conejo Nitro</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
-<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
-<!--											<td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Perro Phoenix</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
-<!--											<td><span class="badge bg-success">Salida</span></td>-->
-<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Gato X</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">31/09/2023</td>-->
-<!--											<td><span class="badge bg-success">Salida</span></td>-->
-<!--											<td class="d-none d-md-table-cell">Sharon Lessman</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Loro Romeo</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
-<!--											<td><span class="badge bg-danger">Hospitalización</span></td>-->
-<!--											<td class="d-none d-md-table-cell">Christina Mason</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td>Gato Wombat</td>-->
-<!--											<td class="d-none d-xl-table-cell">01/01/2023</td>-->
-<!--											<td class="d-none d-xl-table-cell">Pendiente</td>-->
-<!--											<td><span class="badge bg-primary">En consulta</span></td>-->
-<!--											<td class="d-none d-md-table-cell">William Harris</td>-->
-<!--											<td><button class="btn btn-info" >Historia</button></td>-->
-<!--											<td><span class="btn btn-secondary">Editar</span></td>-->
-<!--											<td><span data-feather="trash-2"> </span></td>-->
-<!--										</tr>-->
-									</tbody>
 								</table>
 							</div>
 						 </div>
-
-
 
 						   <!-- Sección calendario -->
 						 <div class="col-12 col-md-6 col-xxl-3 d-flex">
