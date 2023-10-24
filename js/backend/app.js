@@ -21,6 +21,7 @@ app.use(cors(({ origin: '*' })));
 app.use(express.json());
 app.use(express.static('public'));
 
+
 // Rutas de tu API
 const router =require('./rutas/routes.js');
 app.use('/', router);
