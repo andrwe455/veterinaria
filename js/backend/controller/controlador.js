@@ -100,6 +100,7 @@ async function Crearhistoria (req, res) {
 }
 
 async function getmascotas (req,res) {
+    console.log('Solicitud GET recibida en /mascotas');
     try {
         const mascotas = await mascota.find();
         // res.json(mascotas);
