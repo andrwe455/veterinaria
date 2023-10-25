@@ -34,13 +34,10 @@ async function cargarHistorias() {
     } catch (error) {
         console.error('Error:', error);
     }
-
     const table = document.getElementById('tMascotas');
-
     while (table.rows.length > 1) {
         table.deleteRow(1);
     }
-
     formDataArray.forEach(formData => {
         const newRow = table.insertRow(-1);
         const cell1 = newRow.insertCell(0);
@@ -88,7 +85,6 @@ async function cargarHistorias() {
         const editarSpan = document.createElement('span');
         editarSpan.textContent = 'Editar';
         editarSpan.className = 'btn btn-secondary';
-
 
         const historiaButton = document.createElement('button');
         historiaButton.textContent = 'Historia';
