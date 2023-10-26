@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+
+
 async function connect () {
     try {
         mongoose.connect(`mongodb+srv://andresgutierrez83111:fO1RwkAfBKaGKFA8@cluster0.labzm9a.mongodb.net/taller2?retryWrites=true&w=majority`);
 
-        // res.status(200).json({msg:"Conexion exitosa"});
+            // res.status(200).json({msg:"Conexion exitosa"});
         console.log('DB ONLINE');
     } catch (error) {
         console.log(error);
