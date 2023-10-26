@@ -1,6 +1,7 @@
 const usuario = require('../schemas/usuario.js');
 const mascota = require('../schemas/mascotas.js');
 const historias = require('../schemas/historias.js');
+const cita = require('../schemas/citas.js');
 
 /**
  *
@@ -124,11 +125,25 @@ async function eliminar (req,res) {
         res.status(500).json({error: 'Error al crear el servicio'});
     }
 }
+
+async function Asignarcita (req,res) {
+
+    console.log('Solicitud POST recibida en /asignarcita');
+    try {
+        const nuevaCita = new cita(req.body);
+        await nuevaCita.save();
+        res.status(201).json(nuevaCita);
+    }
+    catch (error) {
+        res.status(500).json({error: 'Error al crear el servicio'});
+    }
+}
 module.exports = {
     signup,
     login,
     Crearmascota,
     Crearhistoria,
     getmascotas,
-    eliminar
+    eliminar,
+    Asignarcita
 }

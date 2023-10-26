@@ -7,7 +7,6 @@ const historiasSchema = new mongose.Schema({
     Fecha_inicio: Date,
     Diagnostico: String,
     Tratamiento: String
-
 });
 
 const historias = mongose.model('historias', historiasSchema, 'Historias');
