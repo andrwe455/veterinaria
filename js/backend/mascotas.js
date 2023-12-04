@@ -1,6 +1,5 @@
 
 function crear_mascota(){
-
-    const form =document.getElementById("CrearMascotaForm");
+        const form =document.getElementById("CrearMascotaForm");
     
 }

@@ -1,4 +1,4 @@
-const lform =document.getElementById("loginForm");
+const lform = document.getElementById("loginForm");
 lform.addEventListener("submit", async function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe automáticamente
 
@@ -11,6 +11,7 @@ lform.addEventListener("submit", async function (event) {
         Email: email,
         password: password
     };
+
     let resp;
     try {
         resp=await  fetch('http://localhost:3000/login', {

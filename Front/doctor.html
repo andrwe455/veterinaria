@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="/Font/Pagina/images/favicon.png" />
+
+	<title>Doctor</title>
+
+	<link href=	"./Admin/css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<link href="./Pagina/css/responsive.css" rel="stylesheet" />
+	<link href="./Admin/css/modal.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="indexAdmin.html">
+                    <img src="./Admin/img/photos/faviconD.jpg" class="align-middle" href="./Pagina/index.html">
+                </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="indexAdmin.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Inicio</span>
+                        </a>
+					</li>
+				</ul>
+
+				<div class="sidebar-cta">
+				</div>
+			</div>
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+                <!--Plegar izquierda-->
+				<a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+							    <div class="dropdown-menu-header">
+									<div class="position-relative"></div>
+							    </div>
+							</div>
+						</li>
+
+                        <!--opciones-->
+						<li class="nav-item dropdown">
+                            <!---->
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
+
+                            <!--Nombre del perfil-->
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                                <img src="./Admin/img/photos/team-1.png" class="avatar img-fluid rounded me-1" alt="Mariana Sinisterra" /> <span class="text-dark">Mariana Sinisterra</span>
+                            </a>
+
+                            <!--Opciones de perfil-->
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="indexAdmin.html"><i class="align-middle me-1" data-feather="user"></i> Perfil
+                                </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="indexAdmin.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="./Pagina/indexInicio.html">Salir</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+            <!--Contenido central-->
+			<main class="content">
+				<div class="container-fluid p-0">
+
+                    <!--titulo-->
+					<h1 class="h3 mb-3"><strong>Historias</strong> Clínicas <strong>Activas</strong></h1> 
+
+					
+					<!--Modal (no lo utilizare) 
+						<div id="myModal" class="modal">
+						<div class="modal-content">
+							<span class="close" onclick="cerrarModal()">&times;</span>
+							<h2>Agregar Mascota</h2>
+							<form id="miFormulario" class="form">
+
+								//Campos del formulario
+								<input type="text" id="nombre" placeholder="Nombre de la mascota">
+								<select id="estado">
+									<option value="En consulta">En consulta</option>
+									<option value="Hospitalización">Hospitalización</option>
+									<option value="Salida">Salida</option>
+								</select>
+								<input type="text" id="encargado" placeholder="Encargado">
+								<input type="date" id="fechaIngreso" placeholder="Fecha de Ingreso (DD/MM/AAAA)">
+								<input type="date" id="fechaSalida" placeholder="Fecha de Salida (DD/MM/AAAA)">
+								<input type="text" id="duenno" placeholder="Dueño">
+								<button type="button" id="enviar" onclick="agregarDatos()">Guardar</button>
+							</form>
+						</div>
+					</div>
+					<script src="../../js/backend/tablaMascotas.js"></script>
+					-->
+					
+
+					
+                    
+                    <!--Tabla de historias-->
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+                                <!--Titulo de la tabla-->
+								<div class="card-header">
+									<h5 class="card-title mb-0">Historias</h5>
+								</div>
+
+                                <!--Aqui esta la tabla-->
+								<table class="table table-hover my-0" id="tMascotas">
+									<thead>
+										<tr>
+											<th>Fecha de Creacion</th>
+											<th>Nombre</th>
+											<th>Cedula</th>
+											<th>Numero</th>	
+											<th>Tratamiento</th>
+										</tr>
+										<tbody>
+											
+										</tbody>
+									</thead>
+								</table>
+
+								<!--Boton de añadir citas-->
+								<div class="d-flex justify-content-center mt-3"> 
+									<button onclick="guardarDatosHistorias()">Añadir Historia</button>
+								</div>
+								<!--Aqui voy a pedir-->
+								<form class="d-flex justify-content-center mt-3" id="formulario-paciente">	
+									<input type="text" name="nombrePersona" placeholder="Nombre del paciente">
+									<input type="text" name="cedulaPersona" placeholder="Numero de cedula">
+									<input type="text" name="numeroTelefono" placeholder="Numero de telefono">
+									<input type="text" name="tratamientoPaciente" placeholder="Tratamiento del paciente">
+								</form>
+
+
+								<script>
+
+								</script>
+							</div>
+						</div>
+
+						<!-- Sección calendario -->
+						<div class="col-12 col-md-6 col-xxl-3 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+									<h4 class="card-title mb-0">Calendario</h4>
+								</div>
+                                
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="chart">
+											<div id="datetimepicker-dashboard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--seccion Tabla lista de medicamentos-->
+						<div class= "col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+								<!--Titulo de la tabla-->
+								<div class="card-header">
+									<h5 class="card-title mb-0">Lista de medicamentos</h5>
+								</div>
+
+								<!--Tabla de medicamentos-->
+								<table class="table table-hover my-0" id="tMedicamentos">
+									<thead>
+										<tr>
+											<th>Medicamento</th>
+											<th>ID</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+								<!--Boton de añadir medicamentos-->
+								<div class="d-flex justify-content-center mt-3"> 
+									<button onclick="guardarDatosMedicamentos()">Añadir Historia</button>
+								</div>
+
+								<!--Aqui voy a pedir-->
+								<form class="d-flex justify-content-center mt-3" id="formulario-Medicamento">	
+									<input type="text" name="nombreMedicamento" placeholder="Nombre del Medicamento">
+									<input type="text" name="idMedicamento" placeholder="ID Del medicamentos">
+								</form>
+							</div>
+						</div>
+
+						<!--Seccion de citas-->
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Citas del día </h5>
+								</div>
+
+                                <!--Tabla agregada a la fuerza (no dinamica)-->
+								<table class="table table-hover my-0" id="tabla-citas">
+									<!--La table head-->
+									<thead>
+										<tr>
+											<th class="d-none d-xl-table-cell">Hora</th>
+											<th class="d-none d-xl-table-cell">Usuario</th>
+											<th class="d-none d-xl-table-cell">Mascota</th>
+											<th class="d-none d-md-table-cell">Contacto</th>
+											<th class="d-none d-md-table-cell">Asistencia</th>
+											
+										</tr>
+									</thead>
+
+									<!--Elementos de la tabla-->
+									<tbody>
+										<tr>
+											<td class="d-none d-xl-table-cell">10:34</td>
+											<td class="d-none d-md-table-cell">Victoria Mesa</td>
+											<td class="d-none d-md-table-cell">Niño</td>
+											<td><button class="btn btn-info" disabled>123456789</button></td>
+											<td><span class="btn btn-success">Confirmar</span></td>
+											<td><span data-feather="trash-2"> </span></td>
+										</tr>
+										<tr>
+									
+											<td class="d-none d-xl-table-cell">09:11</td>
+											<td class="d-none d-md-table-cell">Julia Pereza</td>
+											<td class="d-none d-md-table-cell">Lucas</td>
+											<td><button class="btn btn-info" disabled >515447458</button></td>
+											<td><span class="btn btn-success">Confirmar</span></td>
+											<td><span data-feather="trash-2"> </span></td>
+										</tr>
+										<tr>
+										
+											<td class="d-none d-xl-table-cell">11:50</td>
+											<td class="d-none d-md-table-cell">Rosa Cabeza</td>
+											<td class="d-none d-md-table-cell">Nianko</td>
+											<td><button class="btn btn-info" disabled >350680587</button></td>
+											<td><span class="btn btn-success">Confirmar</span></td>
+											<td><span data-feather="trash-2"> </span></td>
+										</tr>
+										<tr>
+									
+											<td class="d-none d-xl-table-cell">15:35</td>
+											<td class="d-none d-md-table-cell">Rosario Rezado</td>
+											<td class="d-none d-md-table-cell">Felix</td>
+											<td><button class="btn btn-info" disabled >350680827</button></td>
+											<td><span class="btn btn-success">Confirmar</span></td>
+											<td><span data-feather="trash-2"> </span></td>
+										</tr>
+									</tbody>
+								</table>
+
+
+								<!--Boton de añadir citas-->
+								<div class="d-flex justify-content-center mt-3"> 
+									<button onclick="guardarDatos()">Añadir Cita</button>
+								</div>
+								<!--Aqui voy a pedir-->
+								<form class="d-flex justify-content-center mt-3" id="formulario-mascotas">	
+									<input type="text" name="nombreDueno" placeholder="Nombre dueño">
+									<input type="text" name="nombreMascota" placeholder="Nombre Mascota">
+									<input type="text" name="numeroTelefono" placeholder="Numero de telefono">
+								</form>
+
+
+								<!--Esto solo da un espaciado-->
+								<div class="d-flex justify-content-center mt-3"> </div> 
+							</div>
+						</div>		
+
+
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+
+
+	<!--Footer-->
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row text-muted">
+				<div class="col-6 text-start">
+					<p class="mb-0">
+						<a class="text-muted" href="https://www.marianadev.net/about-me" target="_blank"><strong>Dashboard- Mariana Sinisterra</strong></a> 
+					</p>
+				</div>
+				<div class="col-6 text-end"></div>
+			</div>
+		</div>
+	</footer>
+
+
+	<script src="./Admin/js/app.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+			// Line chart
+			new Chart(document.getElementById("chartjs-dashboard-line"), {
+				type: "line",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "Sales ($)",
+						fill: true,
+						backgroundColor: gradient,
+						borderColor: window.theme.primary,
+						data: [
+							2115,
+							1562,
+							1584,
+							1892,
+							1587,
+							1923,
+							2566,
+							2448,
+							2805,
+							3438,
+							2917,
+							3327
+						]
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					tooltips: {
+						intersect: false
+					},
+					hover: {
+						intersect: true
+					},
+					plugins: {
+						filler: {
+							propagate: false
+						}
+					},
+					scales: {
+						xAxes: [{
+							reverse: true,
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								stepSize: 1000
+							},
+							display: true,
+							borderDash: [3, 3],
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: "pie",
+				data: {
+					labels: ["Chrome", "Firefox", "IE"],
+					datasets: [{
+						data: [4306, 3801, 1689],
+						backgroundColor: [
+							window.theme.primary,
+							window.theme.warning,
+							window.theme.danger
+						],
+						borderWidth: 5
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Bar chart
+			new Chart(document.getElementById("chartjs-dashboard-bar"), {
+				type: "bar",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "This year",
+						backgroundColor: window.theme.primary,
+						borderColor: window.theme.primary,
+						hoverBackgroundColor: window.theme.primary,
+						hoverBorderColor: window.theme.primary,
+						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+						barPercentage: .75,
+						categoryPercentage: .5
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							gridLines: {
+								display: false
+							},
+							stacked: false,
+							ticks: {
+								stepSize: 20
+							}
+						}],
+						xAxes: [{
+							stacked: false,
+							gridLines: {
+								color: "transparent"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var markers = [{
+					coords: [31.230391, 121.473701],
+					name: "Shanghai"
+				},
+				{
+					coords: [28.704060, 77.102493],
+					name: "Delhi"
+				},
+				{
+					coords: [6.524379, 3.379206],
+					name: "Lagos"
+				},
+				{
+					coords: [35.689487, 139.691711],
+					name: "Tokyo"
+				},
+				{
+					coords: [23.129110, 113.264381],
+					name: "Guangzhou"
+				},
+				{
+					coords: [40.7127837, -74.0059413],
+					name: "New York"
+				},
+				{
+					coords: [34.052235, -118.243683],
+					name: "Los Angeles"
+				},
+				{
+					coords: [41.878113, -87.629799],
+					name: "Chicago"
+				},
+				{
+					coords: [51.507351, -0.127758],
+					name: "London"
+				},
+				{
+					coords: [40.416775, -3.703790],
+					name: "Madrid "
+				}
+			];
+			var map = new jsVectorMap({
+				map: "world",
+				selector: "#world_map",
+				zoomButtons: true,
+				markers: markers,
+				markerStyle: {
+					initial: {
+						r: 9,
+						strokeWidth: 7,
+						stokeOpacity: .4,
+						fill: window.theme.primary
+					},
+					hover: {
+						fill: window.theme.primary,
+						stroke: window.theme.primary
+					}
+				},
+				zoomOnScroll: false
+			});
+			window.addEventListener("resize", () => {
+				map.updateSize();
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+				nextArrow: "<span title=\"Next month\">&raquo;</span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+
+	<!--Añadir datos a las tablas-->
+	<script>
+		function guardarDatos() {
+			var formulario = document.getElementById("formulario-mascotas");
+
+			// Obtener la fecha y hora actual
+			var fechaHoraActual = new Date();
+
+			// Obtener la hora, los minutos y los segundos
+			var horas = fechaHoraActual.getHours();
+			var minutos = fechaHoraActual.getMinutes();
+
+			// Formatear la hora
+			var formatoHora = horas + ':' + minutos;
+
+
+			// Acceder a los valores de los campos usando el formulario.elements
+			var nombreDueno = formulario.elements["nombreDueno"].value;
+			var nombreMascota = formulario.elements["nombreMascota"].value;
+			var numeroTelefono = formulario.elements["numeroTelefono"].value;
+
+			// Crear una nueva fila y celdas
+			var tabla = document.getElementById("tabla-citas").getElementsByTagName('tbody')[0];
+			var nuevaFila = tabla.insertRow(tabla.rows.length);
+
+			var celdaHora = nuevaFila.insertCell(0);
+			var celdaNombreDueno = nuevaFila.insertCell(1);
+			var celdaNombreMascota = nuevaFila.insertCell(2);
+			var celdaNumeroTelefono = nuevaFila.insertCell(3);
+			var celdaConfirmar = nuevaFila.insertCell(4);
+			var celdaBasura = nuevaFila.insertCell(5);
+
+			// Añadir los valores a las celdas
+			celdaHora.innerHTML = formatoHora;
+			celdaNombreDueno.innerHTML = nombreDueno;
+			celdaNombreMascota.innerHTML = nombreMascota;
+			celdaNumeroTelefono.innerHTML = '<button class="btn btn-info" disabled>'+numeroTelefono+'</button>';
+			celdaConfirmar.innerHTML = '<span class="btn btn-success">Confirmar</span>';
+			celdaBasura.innerHTML = '<span data-feather="trash-2"></span>'
+			formulario.reset();
+    	}
+
+		function guardarDatosHistorias() {
+			var formulario = document.getElementById("formulario-paciente");
+
+			// Obtener la fecha y hora actual
+			var fechaHoraActual = new Date();
+
+			// Obtener la hora, los minutos y los segundos
+			var horas = fechaHoraActual.getHours();
+			var minutos = fechaHoraActual.getMinutes();
+
+			// Formatear la hora
+			var formatoHora = horas + ':' + minutos;
+
+
+			// Acceder a los valores de los campos usando el formulario.elements
+			var nombre = formulario.elements["nombrePersona"].value;
+			var cedula = formulario.elements["cedulaPersona"].value;
+			var numero = formulario.elements["numeroTelefono"].value;
+			var tratamientoPaciente = formulario.elements["tratamientoPaciente"].value
+
+			// Crear una nueva fila y celdas
+			var tabla = document.getElementById("tMascotas").getElementsByTagName('tbody')[0];
+			var nuevaFila = tabla.insertRow(tabla.rows.length);
+
+			var celdaHora = nuevaFila.insertCell(0)
+			var celdaNombre = nuevaFila.insertCell(1);
+			var celdaCedula = nuevaFila.insertCell(2);
+			var celdaNumero = nuevaFila.insertCell(3);
+			var celdaTratamiento = nuevaFila.insertCell(4);
+
+			// Añadir los valores a las celdas
+			celdaHora.innerHTML = formatoHora;
+			celdaNombre.innerHTML = nombre;
+			celdaCedula.innerHTML = cedula;
+			celdaNumero.innerHTML = '<button class="btn btn-info" disabled>'+numero+'</button>';
+			celdaTratamiento.innerHTML = tratamientoPaciente;
+			formulario.reset();
+    	}
+
+		function guardarDatosMedicamentos() {
+			var formulario = document.getElementById("formulario-Medicamento");
+
+			// Obtener la fecha y hora actual
+			var fechaHoraActual = new Date();
+
+			// Obtener la hora, los minutos y los segundos
+			var horas = fechaHoraActual.getHours();
+			var minutos = fechaHoraActual.getMinutes();
+
+			// Formatear la hora
+			var formatoHora = horas + ':' + minutos;
+
+
+			// Acceder a los valores de los campos usando el formulario.elements
+			var nombreMedicamento = formulario.elements["nombreMedicamento"].value;
+			var idMedicamento = formulario.elements["idMedicamento"].value;
+
+			// Crear una nueva fila y celdas
+			var tabla = document.getElementById("tMedicamentos").getElementsByTagName('tbody')[0];
+			var nuevaFila = tabla.insertRow(tabla.rows.length);
+
+			var celdaMedicamento = nuevaFila.insertCell(0);
+			var celdaId = nuevaFila.insertCell(1);
+
+			// Añadir los valores a las celdas
+			celdaMedicamento.innerHTML = nombreMedicamento;
+			celdaId.innerHTML = idMedicamento;
+			formulario.reset();
+    	}
+	</script>
+
+	<script>
+
+	</script>
+
+</body>
+</html>
