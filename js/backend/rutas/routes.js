@@ -14,6 +14,9 @@ router.post('/login', controlador.login);
 router.post('/crearmascota', controlador.Crearmascota);
 router.post('/crearhistoria',controlador.Crearhistoria);
 router.post('/asignarcita',controlador.Asignarcita);
+
+
+router.get("/EstadoMascota")
 router.get("/mascotas",controlador.getmascotas);
 router.delete("/eliminarMascota",controlador.eliminar);
 
