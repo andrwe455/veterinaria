@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Vetlife</title>
+  <link rel="stylesheet" href="/Front/Pagina/css/userprofilesstyles.css">
+</head>
+<body>
+
+  
+  <div class="container">
+    <div class="main">
+      <div class="signup">
+        <label for="chk">Perfil de Usuario</label>
+        <form id="profileForm">
+          <div class="form-group">
+            <label for="profilePicture">Foto de perfil:</label>
+            <input type="file" id="profilePicture" accept="image/*" onchange="previewImage(event)">
+            <img id="preview" class="profile-picture" src="default-profile-picture.jpg">
+          </div>
+          <div class="form-group">
+            <label for="firstName">Nombre:</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Apellido:</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Número de contacto:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit" id="saveButton">Guardar cambios</button>
+          <button type="submit" id="cancelarbutton">Cancelar</button>
+        </form>   
+      </div>
+      <div class="login">
+      </div>
+    </div>
+  </div>
+  <script src="/Front/Pagina/js/userprofilescript.js"></script>
+</body>
+</html>
