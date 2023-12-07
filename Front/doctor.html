@@ -2,153 +2,187 @@
 <html lang="en">
 
 <head>
-	<!-- Basic -->
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<!-- Mobile Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<!-- Site Metas -->
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="/Font/Pagina/images/favicon.png" />
 
-	<title>VetLife</title>
+	<title>Doctor</title>
 
 	<link href=	"./Admin/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 	<link href="./Pagina/css/responsive.css" rel="stylesheet" />
 	<link href="./Admin/css/modal.css" rel="stylesheet" />
-	</head>
+</head>
 
 <body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="indexAdmin.html">
-          <img src="./Admin/img/photos/faviconD.jpg" class="align-middle" href="./Pagina/index.html" />
-        </a>
+				<a class="sidebar-brand" href="index.html">
+                    <img src="./Admin/img/photos/faviconD.jpg" class="align-middle" href="./Pagina/index.html">
+                </a>
+
 				<ul class="sidebar-nav">
-					</li>
-
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="indexAdmin.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Inicio</span>
-            </a>
+						<a class="sidebar-link" href="index.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Inicio</span>
+                        </a>
 					</li>
-
-			
 				</ul>
 
 				<div class="sidebar-cta">
 				</div>
 			</div>
 		</nav>
-
 		<div class="main">
+
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
+                <!--Plegar izquierda-->
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+                    <i class="hamburger align-self-center"></i>
+                </a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						
+
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-							
 							</a>
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-									
-								
-								</div>
-							</div>
+							    <div class="dropdown-menu-header">
+									<div class="position-relative"></div>
+							    </div>
 							</div>
 						</li>
 
+                        <!--opciones-->
 						<li class="nav-item dropdown">
+                            <!---->
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
 
-				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-					<img id="imagenPerfil" class="avatar img-fluid rounded me-1" alt="Mariana Sinisterra"
-					id="fotoUsuario"/> 
-					<span class="text-dark" id="nombreUsuario">Mariana Sinisterra</span>
-                </a>
-				<script src="./User/fotos.js"></script>
+                            <!--Nombre del perfil-->
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                                <img id="imagenPerfil" class="avatar img-fluid rounded me-1" alt="Mariana Sinisterra" /> <span class="text-dark">Mariana Sinisterra</span>
+                            </a>
+							
+							<script src="./User/fotos.js"></script>
+                            <!--Opciones de perfil-->
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="indexAdmin.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+								<a class="dropdown-item" href="doctor.html"><i class="align-middle me-1" data-feather="user"></i> Perfil
+                                </a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="./indexUserProfile.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
+								<a class="dropdown-item" href="indexUserProfile.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="./Pagina/indexInicio.html">Salir</a>
+								<a class="dropdown-item" href="./Pagina/index.html">Salir</a>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</nav>
-			<script src="User/app.js"></script>
+
+            <!--Contenido central-->
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Historias</strong> Clínicas <strong>Activas</strong></h1> 
-					<button class="btn btn-secondary" onclick=cargarHistorias()>Cargar Historias</button>
-					<button class="btn btn-secondary" onclick=abrirModal()>Agregar mascota</button>
-					<div id="myModal" class="modal">
-						<div class="modal-content">
-							<span class="close" onclick="cerrarModal()">&times;</span>
-							<h2>Agregar Mascota</h2>
-							<form id="miFormulario" class="form">
-								<!-- Campos del formulario -->
-								<input type="text" id="nombre" placeholder="Nombre de la mascota">
-								<select id="estado">
-									<option value="En consulta">En consulta</option>
-									<option value="Hospitalización">Hospitalización</option>
-									<option value="Salida">Salida</option>
-								</select>
-								<input type="text" id="encargado" placeholder="Encargado">
-								<input type="date" id="fechaIngreso" placeholder="Fecha de Ingreso (DD/MM/AAAA)">
-								<input type="date" id="fechaSalida" placeholder="Fecha de Salida (DD/MM/AAAA)">
-								<input type="text" id="duenno" placeholder="Dueño">
-								<button type="button" id="enviar" onclick="agregarDatos()">Guardar</button>
-							</form>
-						</div>
-					</div>
-					<script src="../../js/backend/tablaMascotas.js"></script>
+                    <!--titulo-->
+					<h1 class="h3 mb-3"><strong>Historias</strong> Clínicas <strong>Activas</strong></h1> 	
+                    
+                    <!--Tabla de historias-->
 					<div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
 							<div class="card flex-fill">
+                                <!--Titulo de la tabla-->
 								<div class="card-header">
-									<h5 class="card-title mb-0">VetLife</h5>
+									<h5 class="card-title mb-0">Historias</h5>
 								</div>
+
+                                <!--Aqui esta la tabla-->
 								<table class="table table-hover my-0" id="tMascotas">
 									<thead>
 										<tr>
-											<th>Nombre</th>
-											<th class="d-none d-xl-table-cell">Ingreso</th>
-											<th class="d-none d-xl-table-cell">Egreso</th>
-											<th>Estado</th>
-											<th class="d-none d-md-table-cell">Encargado</th>
-											<th class="d-none d-md-table-cell">Expediente</th>
+											<th>Nombre de la mascota</th>
+											<th>Especie</th>
+											<th>Raza</th>
+											<th>Sexo</th>	
+											<th>peso</th>
+											<th>Descargar</th>
 										</tr>
 									</thead>
+									<tbody>
+											<tr>
+												<td>Lupa</td>
+												<td>Gato</td>
+												<td>Siamés</td>
+												<td>Hembra</td>
+												<td>5kg</td>
+												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+											</tr>
+											<tr>
+												<td>pepe</td>
+												<td>perro</td>
+												<td>Pug</td>
+												<td>Macho</td>
+												<td>20kg</td>
+												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+											</tr>
+											<tr>
+												<td>Negro</td>
+												<td>Perro</td>
+												<td>buldog</td>
+												<td>Macho</td>
+												<td>42kg</td>
+												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+											</tr>
+									</tbody>
 								</table>
-							</div>
-						 </div>
 
-						   <!-- Sección calendario -->
-						 <div class="col-12 col-md-6 col-xxl-3 d-flex">
+								<details>
+									<summary>AÑADIR HISTORIA</summary>
+									<!--Aqui voy a pedir-->
+									<form id="formulario-paciente">	
+										<p>Informacion de la mascota:</p>
+										<input type="text" name="nombreMascota" placeholder="Mascota">
+										<input type="text" name="especie" placeholder="Especie">
+										<input type="text" name="raza" placeholder="Raza">
+										<input type="text" name="sexo" placeholder="sexo">
+										<input type="text" name="peso" placeholder="peso">
+										<br>
+										<br>
+										<label>Fecha de nacimiento: </label>
+										<input type="date" name="fechaNacimiento">
+										<hr>
+										<p>Informacion del propietario: </p><br>
+										<input type="text" name="nombrePropietario" placeholder="Nombre del dueño">
+										<input type="text" name="direccionPropietario" placeholder="Direccion del propietario">
+										<input type="number" name="numeroPropietario" placeholder="Numero de telefono">
+										<hr>
+										<p>Historial medico:</p>
+										<p>Motivo de la consulta:</p>
+										<textarea name="motivoConsulta" rows="5" cols="40" style="display: inline-block;"></textarea>
+										<p>Diagnostico realizado:</p>
+										<textarea name="diagnosticoConsulta" rows="5" cols="40" style="display: inline-block;"></textarea>
+										<br>
+										<label for="tratamiento" id="tratamiento">tratamiento</label>
+										<textarea name="tratamientoConsulta" id="tratamientoConsulta" cols="30" rows="10"></textarea>
+									</form>
+									<div class="d-flex justify-content-center mt-3"> 
+										<button onclick="guardarhistoria()" style="margin-bottom: 10px;">Añadir Historia</button>
+									</div>
+									<script src="../js/backend/historias.js"></script>
+								</details>
+							</div>
+						</div>
+
+						<!-- Sección calendario -->
+						<div class="col-12 col-md-6 col-xxl-3 d-flex">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
-
 									<h4 class="card-title mb-0">Calendario</h4>
 								</div>
+                                
 								<div class="card-body d-flex">
 									<div class="align-self-center w-100">
 										<div class="chart">
@@ -156,21 +190,20 @@
 										</div>
 									</div>
 								</div>
-
-
 							</div>
-						 </div>
-
-						 <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+						</div>
+						<!--Seccion de citas-->
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-
 									<h5 class="card-title mb-0">Citas del día </h5>
 								</div>
-								<table class="table table-hover my-0">
+
+                                <!--Tabla agregada a la fuerza (no dinamica)-->
+								<table class="table table-hover my-0" id="tabla-citas">
+									<!--La table head-->
 									<thead>
 										<tr>
-											
 											<th class="d-none d-xl-table-cell">Hora</th>
 											<th class="d-none d-xl-table-cell">Usuario</th>
 											<th class="d-none d-xl-table-cell">Mascota</th>
@@ -179,9 +212,10 @@
 											
 										</tr>
 									</thead>
+
+									<!--Elementos de la tabla-->
 									<tbody>
 										<tr>
-										
 											<td class="d-none d-xl-table-cell">10:34</td>
 											<td class="d-none d-md-table-cell">Victoria Mesa</td>
 											<td class="d-none d-md-table-cell">Niño</td>
@@ -216,50 +250,36 @@
 											<td><span class="btn btn-success">Confirmar</span></td>
 											<td><span data-feather="trash-2"> </span></td>
 										</tr>
-										
 									</tbody>
 								</table>
-								<div class="d-flex justify-content-center mt-3"> 
-									<span class="btn btn-secondary" onclick="prueba()">Añadir Cita</span>
-								</div>
-									<div class="d-flex justify-content-center mt-3"> 	
-									</div> 
-								</div>
-								<script>
-									function prueba(){
-										
-										var user = sessionStorage.getItem("user");
-										var userjson = JSON.parse(user);
-										var username = userjson.username;
-										alert(username);
-									}
-								</script>
+
+
+								<!--Esto solo da un espaciado-->
+								<div class="d-flex justify-content-center mt-3"> </div> 
 							</div>
-							
-						</div>
-						
-					</div>
-
-
-					</main>
+						</div>		
 					</div>
 				</div>
-
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a class="text-muted" href="https://www.marianadev.net/about-me" target="_blank"><strong>Dashboard- Mariana Sinisterra</strong></a> 
-							</p>
-						</div>
-						<div class="col-6 text-end">
-						</div>
-					</div>
-				</div>
-			</footer>
+			</main>
 		</div>
 	</div>
+
+
+
+	<!--Footer-->
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row text-muted">
+				<div class="col-6 text-start">
+					<p class="mb-0">
+						<a class="text-muted" href="https://www.marianadev.net/about-me" target="_blank"><strong>Dashboard- Mariana Sinisterra</strong></a> 
+					</p>
+				</div>
+				<div class="col-6 text-end"></div>
+			</div>
+		</div>
+	</footer>
+
 
 	<script src="./Admin/js/app.js"></script>
 
@@ -333,6 +353,7 @@
 			});
 		});
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart
@@ -361,6 +382,7 @@
 			});
 		});
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Bar chart
@@ -405,6 +427,7 @@
 			});
 		});
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var markers = [{
@@ -472,6 +495,7 @@
 			});
 		});
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
@@ -484,7 +508,5 @@
 			});
 		});
 	</script>
-
 </body>
-
 </html>

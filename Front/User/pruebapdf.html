@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="generarpdf" >Generar pdf</button>
+
+    <script>
+        document.getElementById('generarpdf').addEventListener('click', function(){
+            const formdata = {
+                '_id': '65710f9a10e62ba699783c6d'
+            }
+            fetch('http://localhost:3000/crearPdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formdata)
+            }).then(res =>{
+                if(!res.ok){
+                    throw Error(res.status);
+                }
+                return res.blob();
+            }).then(blob =>{
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'prueba.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }).catch(error => {
+                console.log(error);
+            })
+        });
+    </script>
+</body>
+</html>
