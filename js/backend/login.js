@@ -13,20 +13,36 @@ lform.addEventListener("submit", async function (event) {
     };
     let resp;
     try {
-        resp=await  fetch('http://localhost:3000/login', {
+        fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
+        }).then(response => response.json()).then(data => {
+            const userdata = data.user;
+            
+            sessionStorage.setItem('user', JSON.stringify(userdata));
+            
+            if(userdata.role == "user")
+            {
+                window.location.href = "../Front/indexUser.html";
+            }
+            else if (userdata.role == "admin")
+            {
+                window.location.href = "../Front/indexAdmin.html";
+            }
+            else if (userdata.role == "doctor")
+            {
+                window.location.href = "../Front/doctor.html";
+            }
         });
-        if (resp.status==200) {
-            window.location.href = "../Front/indexAdmin.html";
-        }
+
         alert("Usuario loggeado correctamente");
     } catch (error) {
         console.error('Error:', error);
     }
+    alert(sessionStorage.getItem('user.username'));
     console.log(resp);
     return resp;
     // Enviar la solicitud POST al servidor

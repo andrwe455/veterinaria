@@ -4,9 +4,15 @@ const historiasSchema = new mongose.Schema({
     _id: String,
     Nombre_Mascota: String,
     Nombre_Duenno: String,
-    Fecha_inicio: Date,
+    especie: String,
+    raza: String,
+    sexo: String,
+    peso: String,
+    fechaNacimiento: String,
+    motivoConsulta: String,
     Diagnostico: String,
-    Tratamiento: String
+    Tratamiento: String,
+    veterinario: String
 });
 
 const historias = mongose.model('historias', historiasSchema, 'Historias');
