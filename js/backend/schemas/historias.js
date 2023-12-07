@@ -1,8 +1,7 @@
 const mongose = require('mongoose');
 
 const historiasSchema = new mongose.Schema({
-    _id: String,
-    Nombre_Mascota: String,
+    Nombre_mascota: String,
     Nombre_Duenno: String,
     especie: String,
     raza: String,

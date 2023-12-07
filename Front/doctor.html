@@ -10,7 +10,7 @@
 
 	<link href=	"./Admin/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="fontawesome/css/all.min.css">
 	<link href="./Pagina/css/responsive.css" rel="stylesheet" />
 	<link href="./Admin/css/modal.css" rel="stylesheet" />
 </head>
@@ -76,8 +76,9 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="indexUserProfile.html"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="./Pagina/index.html">Salir</a>
+								<a class="dropdown-item" onclick="logout()">Salir</a>
 							</div>
+							<script src="../js/backend/login.js"></script>
 						</li>
 					</ul>
 				</div>
@@ -98,9 +99,9 @@
 								<div class="card-header">
 									<h5 class="card-title mb-0">Historias</h5>
 								</div>
-
+								<button onclick="cargarHistorias()" type="button"> cargar historias</button>
                                 <!--Aqui esta la tabla-->
-								<table class="table table-hover my-0" id="tMascotas">
+								<table class="table table-hover my-0" id="Tablahistorias">
 									<thead>
 										<tr>
 											<th>Nombre de la mascota</th>
@@ -118,7 +119,7 @@
 												<td>Siamés</td>
 												<td>Hembra</td>
 												<td>5kg</td>
-												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+												<td><i class="fas fa-file-pdf"></i></td>
 											</tr>
 											<tr>
 												<td>pepe</td>
@@ -126,7 +127,7 @@
 												<td>Pug</td>
 												<td>Macho</td>
 												<td>20kg</td>
-												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+												<td><i class="fas fa-file-pdf"></i></td>
 											</tr>
 											<tr>
 												<td>Negro</td>
@@ -134,7 +135,7 @@
 												<td>buldog</td>
 												<td>Macho</td>
 												<td>42kg</td>
-												<td><img src="pdf_icon.png" style="width: 30%; height: 55px;"></td>
+												<td><span class="fas fa-file-pdf"></span></td>
 											</tr>
 									</tbody>
 								</table>
@@ -248,7 +249,7 @@
 											<td class="d-none d-md-table-cell">Felix</td>
 											<td><button class="btn btn-info" disabled >350680827</button></td>
 											<td><span class="btn btn-success">Confirmar</span></td>
-											<td><span data-feather="trash-2"> </span></td>
+											<td><span data-feather="trash-2" onclick=""> </span></td>
 										</tr>
 									</tbody>
 								</table>
