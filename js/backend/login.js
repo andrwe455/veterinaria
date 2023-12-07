@@ -47,3 +47,8 @@ lform.addEventListener("submit", async function (event) {
     return resp;
     // Enviar la solicitud POST al servidor
 });
+
+function logout(){
+    sessionStorage.removeItem('user');
+    window.location.href = "../index.html";
+}

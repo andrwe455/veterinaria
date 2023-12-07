@@ -16,6 +16,7 @@ router.post('/fotoPerfil', controlador.FotoPerfil);
 router.post('/crearPdf', controlador.crearHistoriaPdf);
 router.get("/mascotas",controlador.getmascotas);
 router.get('/fotoPerfil/:id', controlador.getFotoPerfil);
+router.get('/historias', controlador.getHistorias);
 router.put('/fotoPerfil/:id', controlador.updateFotoPerfil);
 router.delete("/eliminarMascota",controlador.eliminar);
 

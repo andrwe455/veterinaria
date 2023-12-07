@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors(({ origin: '*' })));
 app.use(express.json());
 app.use(express.static('public'));
-
+app.use(express.static('public/img'));
 
 // Rutas de tu API
 const router =require('./rutas/routes.js');
