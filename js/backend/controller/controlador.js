@@ -7,7 +7,10 @@ const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer().single('fotoPerfil');
 const PDFDocument = require('pdfkit');
+const PDFDocument1 = require('pdfkit-table');
 const fs = require('fs');
+const path = require('path');
+
 
 /**
  *
@@ -100,9 +103,10 @@ async function Crearhistoria (req, res) {
     console.log('Solicitud POST recibida en /crearhistoria');
     try {
         const nuevaHistoria = new historias(req.body);
-
+        console.log(nuevaHistoria);
         await nuevaHistoria.save();
         res.status(201).json(nuevaHistoria);
+        
     }
     catch (error) {
         res.status(500).json({error: 'Error al crear el servicio'});
@@ -227,9 +231,9 @@ async function updateFotoPerfil(req, res) {
 async function getHistorias(req,res) {
     console.log('Solicitud GET recibida en /historias');
     try {
-        const historias = await historias.find();
+        const historia = await historias.find();
         // res.json(mascotas);
-        return res.json(historias);
+        return res.json(historia);
         // return mascotas;
     }
     catch (error) {
@@ -248,30 +252,34 @@ async function crearHistoriaPdf (req,res) {
             
             if (historia._id == ID) {
                 console.log(historia._id);
+
                 const doc = new PDFDocument();
+
+                
                 doc.pipe(fs.createWriteStream('output.pdf'));
-
-                doc.text('Historia Clinica', 100, 50);
-                doc.fontSize(18).text('Información del Documento', { align: 'center' }).moveDown();
-
+            
                 const table = {
-                    headers: ['Campo', 'Valor'],
+                    headers: ['Nombre Mascota', 'Nombre Dueño','Especie','Raza','Sexo'],
                     rows: [
-                        ['Nombre Mascota', historia.Nombre_Mascota],
-                        ['Nombre Dueño', historia.Nombre_Duenno],
-                        ['Especie', historia.especie],
-                        ['Raza', historia.raza],
-                        ['Sexo', historia.sexo],
+                        [historia.Nombre_Mascota, historia.Nombre_Duenno, historia.especie, historia.raza, historia.sexo],
                         // Añade más filas según la estructura de tu documento
                     ],
+                    widths: [100, 100, 100, 100, 100],
                 };
 
-                doc.text(table.headers.join(' | '));
-                doc.text('_______________________________________________________________________________________________');
+
+
+                path.join(__dirname, '../public/img/vetlifelogin.png');
+                const imagen = path.join(__dirname, '../public/img/vetlifelogin.png');
+
+                doc.image(imagen,510,3,{width:200,height:100,fit:[100,100]});
+                doc.fontSize(18).text('VetLife', { align: 'center' }).moveDown();
+                doc.text('Historia Clinica', 100, 150);
                 doc.moveDown();
-                doc.text(table.rows.map(row => row.join(' | ')).join('\n'));
+                doc.text('Nombre de la mascota: ' + historia.Nombre_mascota);
                 doc.moveDown();
-                doc.text('_______________________________________________________________________________________________');
+                doc.text('id de la mascota: '+ historia._id);
+                
                 doc.moveDown();
                 doc.text('Motivo de la consulta: ' + historia.motivoConsulta);               
 
